@@ -1,18 +1,17 @@
 # SlickExcel 
-( Extended SlickGrid )
 
-### 機能概要
+### 概要
 
 Webベースで動作する多機能なグリッド、表計算ライブラリです。Webベースで業務系システムを作っていると必ず要望に挙がるのがリッチな表計算（グリッド）表示ライブラリです。こちらは通常の表示。縦横スクロール対応。入力方式の設定や、行を選択してといった機能はExcelにもないので便利ではないでしょうか。また、プラグインによってExcelとコピー&ペーストでデータの授受もできるようになっています。SlickGridはJavaScript製、MIT Licenseのオープンソース・ソフトウェアです。
 
-### 主な改良箇所
+### 機能・改良
 * Excelと同様のフィルタリング、ソート（昇順・降順）
-* 表示行数カウント表示
-* フィルタリングしたデータのみを抽出、外部出力(CSV)
-* 列における各値のユニークカウント (拡張中。5000件程度が限度）
-* コピペ。Copy and Paste (slickexcel's Cell copy >> other Application(ex:Excel's sheet , simpletext, any Application))
 * ベースとなるライブラリの連携調整
 * ソート処理の調整(dataview.js)
+* 表示行数カウント表示
+* フィルタリングしたデータのみを抽出、外部出力(CSV)
+* 列における各値のユニークカウント機能
+* Copy and Paste (slickexcel上で任意をコピー >> ExcelやTextなど外部アプリケーションにペースト(tab区切り))
 
 
 ### Extended code
@@ -21,12 +20,11 @@ Webベースで動作する多機能なグリッド、表計算ライブラリ�
 * "SlickGrid-Export-CSV" : https://github.com/BethelBoy/SlickGrid-Export-CSV
 
 ### ToDo (ヒマだったらやる）
-* ユニーク抽出したものをGoogleChartと連携した表示
-* ユニークカウントのON/OFF指定
+* GoogleChart連携
+* ユニークカウントON/OFF指定
 * Sampleの用意
 
-MTHD (individual.lab)
-
+OKASHIRA (individual.lab)
 
 
 ## About SlickGrid
