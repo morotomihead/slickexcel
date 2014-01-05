@@ -1,18 +1,23 @@
 # SlickExcel 
 
-### 概要
+### Sample View
+http://okashira.github.io/slickexcel/slickexcel_example01.html
+(CSV出力はPHP有効のみ）
 
-Webベースで動作する多機能なグリッド、表計算ライブラリです。Webベースで業務系システムを作っていると必ず要望に挙がるのがリッチな表計算（グリッド）表示ライブラリです。こちらは通常の表示。縦横スクロール対応。入力方式の設定や、行を選択してといった機能はExcelにもないので便利ではないでしょうか。また、プラグインによってExcelとコピー&ペーストでデータの授受もできるようになっています。SlickGridはJavaScript製、MIT Licenseのオープンソース・ソフトウェアです。
-
-### 機能・改良
+### 機能・改良点
 * Excelと同様のフィルタリング、ソート（昇順・降順）
-* ベースとなるライブラリの連携調整
-* ソート処理の調整(dataview.js)
-* 表示行数カウント表示
 * フィルタリングしたデータのみを抽出、外部出力(CSV)
-* 列における各値のユニークカウント機能
+* フィルターメニューにて各値のユニークカウント表示
+* Drag and Dropで列並びの編集。編集した状態でのCSV出力
 * Copy and Paste (slickexcel上で任意をコピー >> ExcelやTextなど外部アプリケーションにペースト(tab区切り))
+* 表示行数カウント表示
+* 各ライブラリの連携調整
+* データソートの処理調整
 
+### 概要
+* SlickGridはJavaScript製、MIT Licenseのオープンソース・ソフトウェア。
+* Webベースで動作するExcelライクな表計算（グリッド）表示ライブラリ。
+* 大量のデータを高速に表示処理することが可能（50万行程度のデータなど）
 
 ### Extended code
 * "Paste from Excel to SlickGrid" : (Nereo Labs) http://labs.nereo.com/slick.html
@@ -24,8 +29,8 @@ Webベースで動作する多機能なグリッド、表計算ライブラリ�
 * ユニークカウントON/OFF指定
 * Sampleの用意
 
-OKASHIRA (individual.lab)
 
+### OKASHIRA (individual.lab)
 
 ## About SlickGrid
 
