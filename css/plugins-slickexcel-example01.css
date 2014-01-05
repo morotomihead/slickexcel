@@ -1,0 +1,66 @@
+﻿            .excel-grid {
+                position: absolute;
+                top: 80px;
+                bottom: 25px;
+                border-right: 2px solid silver;
+                border-left: 2px solid silver;
+                border-top: 1px solid silver;
+                border-bottom: 2px solid silver;
+
+            }
+            .slick-cell.copied {
+              background: blue;
+              background: rgba(0, 0, 255, 0.2);
+              -webkit-transition: 0.5s background;
+            }
+
+            #status {
+                position: absolute;
+                bottom: 0;
+                background-color: #F5F5F5;
+                color: black;
+                
+                height: 26px;
+                width: 100%;
+            }
+
+            #status-label {
+                margin: 4px;
+            }
+
+            .btn {
+                display: inline-block;
+                height: 25px;
+                text-align: center;
+                text-decoration: none;
+                outline: none;
+                border:none;
+
+                background-color: #666666;
+                font-family: arial, sans-serif;
+                font-size: 5.25pt;
+                color: #f9f9f9;  
+            }
+
+            .btn:hover {
+                background-color: rgba(120, 120, 120, .2);
+                color: #222222;  
+            }
+
+            .btn::before,
+            .btn::after {
+                position: absolute;
+                z-index: -1;
+                display: block;
+                content: '';
+            }
+
+            .btn,
+            .btn::before,
+            .btn::after {
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                -webkit-transition: all .3s;
+                transition: all .3s;
+            }

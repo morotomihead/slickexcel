@@ -1,0 +1,229 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html">
+        <title>SlickExcel Sample</title>
+        <link rel="stylesheet" href="./css/slick.grid.css" type="text/css" />
+        <link rel="stylesheet" href="./css/plugins-common.css" type="text/css" />
+        <link rel="stylesheet" href="./css/plugins-slickexcel-style.css" type="text/css" />
+        <link rel="stylesheet" href="./css/plugins-slickexcel-example01.css" type="text/css" />
+    </head>
+    
+    <body>
+
+    <div>
+        <ul>
+            <li><b>SlickExcel (SlickGrid enhanced) </b></li>
+            <li>// Demonstrates the Row and Header overlays, the Selected Cell overlay, filter, and Fill Down</li>
+        </ul>
+    </div>
+
+    <div class="row-fluid" style="margin: 5px 0px 5px 30px">        
+        <!--$("id of SlickGrid table goes here").table2CSV();-->
+        <input value="Export as Comma (CSV)" type="button" class="btn" onclick="$(grid).table2CSV()">
+        <input value="Export as Tab (Excel)" type="button" class="btn" onclick="$(grid).table2CSV({ separator : '\t' })">
+
+    </div>
+
+    <div id="grid" class="excel-grid" style="width: 98%;"></div>
+
+    <div id="status">
+        <label id="status-label"></label>
+    </div>
+
+    <script type="text/javascript" src="./scripts/underscore.js"></script>    
+    <script type="text/javascript" src="./scripts/SlickGrid/lib/jquery-1.7.min.js"></script>
+    <script type="text/javascript" src="./scripts/SlickGrid/lib/jquery.event.drag-2.2.js"></script>
+    <script type="text/javascript" src="./scripts/SlickGrid/lib/jquery-ui-1.8.16.custom.min.js"></script>
+    <script type="text/javascript" src="./scripts/SlickGrid/lib/jquery.event.drag-2.2.js"></script>
+    <script type="text/javascript" src="./scripts/SlickGrid/slick.core.js"></script>
+    <script type="text/javascript" src="./scripts/SlickGrid/slick.grid.js"></script>
+    <script type="text/javascript" src="./scripts/SlickGrid/slick.dataview.js"></script>
+    <script type="text/javascript" src="./scripts/SlickGrid/slick.editors.js"></script>
+    <script type="text/javascript" src="./scripts/SlickGrid/slick.formatters.js"></script>    
+    <script type="text/javascript" src="./scripts/SlickGrid/Plugins/slick.cellrangeselector.js"></script>
+    <script type="text/javascript" src="./scripts/SlickGrid/Plugins/slick.cellselectionmodel.js"></script>
+    <script type="text/javascript" src="./scripts/SlickGrid/Plugins/slick.cellrangedecorator.js"></script>
+    <script type="text/javascript" src="./scripts/SlickGrid/Plugins/slick.cellexternalcopymanager.js"></script>
+    <script type="text/javascript" src="./scripts/SlickGrid-Ext/ext.headerfilter.js"></script>
+    <script type="text/javascript" src="./scripts/SlickGrid-Ext/ext.overlays.js"></script>
+    <script type="text/javascript" src="./scripts/SlickGrid-Export-CSV/table-to-csv.js"></script>  
+
+    <script>
+
+        var grid;
+
+        var options = {
+            enableCellNavigation: true,
+            syncColumnCellResize: true,
+            multiColumnSort: true,
+            forceFitColumns: false,
+            defaultColumnWidth: 120,
+            explicitInitialization: true,
+            editable: false,
+        };
+
+        var columns = [
+            //columns Sample
+            { id: "title", name: "Play No.", field: "title", width: 120 },
+            { id: "duration", name: "Time(s)", field: "duration", width: 120 },
+            { id: "%", name: "Finalize(%)", field: "percentComplete", width: 120 },
+            { id: "start", name: "Start", field: "start", width: 120 },
+            { id: "finish", name: "End", field: "finish", width: 120 },
+            { id: "effort-driven", name: "rate", field: "effortDriven", width: 120 },
+            { id: "c7", name: "Hz", field: "c7", width: 120 },
+            { id: "c8", name: "Bit", field: "c8", width: 120 },
+            { id: "c9", name: "Genre", field: "c9", width: 120 },
+            { id: "c10", name: "Low EQ", field: "c10", width: 120 },
+            { id: "c11", name: "Low Gain", field: "c11", width: 120 },
+            { id: "c12", name: "Mid EQ", field: "c12", width: 120 },
+            { id: "c13", name: "Mid Gain", field: "c13", width: 120 },
+            { id: "c14", name: "High EQ", field: "c14", width: 120 },
+            { id: "c15", name: "High Gain", field: "c15", width: 120 },
+            { id: "c16", name: "Play Count", field: "c16", width: 120 }
+        ];
+
+        var data = [];
+
+        //data Sample
+        for (var i = 5000; i-- > 0;) {
+            data[i] = {
+                id: "id_" + i,
+                title: i ,
+                duration: Math.round(Math.random() * 600),
+                percentComplete: Math.round(Math.random() * 100),
+                start: random(["2010","2012","2013"], 1) + "/" + random(["01","02","03","04","05","06","07","08","09","10","11","12"], 1), 
+                finish: random(["2014","2015","2016"], 1) + "/" + random(["01","02","03","04","05","06","07","08","09","10","11","12"], 1),
+                effortDriven: "LV" + random([1,2,3,4,5], 1),
+                c7: random([96000,48000,44100,22050], 1) + "Hz",
+                c8: random([24,16], 1) + "bit",
+                c9: random(["Jazz","HipHop","Rock","Pops","Bossa","Ambient","Noise","House"], 1),
+                c10: "Type :" + random(["A","B","C"], 1),
+                c11: random(["+","-"], 1) +random([1,2,3,4,5,6], 1)+ "db",
+                c12: "Type :" + random(["A","B","C"], 1),
+                c13: random(["+","-"], 1) +random([1,2,3,4,5,6], 1)+ "db",
+                c14: "Type :" + random(["A","B","C"], 1),
+                c15: random(["+","-"], 1) +random([1,2,3,4,5,6], 1)+ "db",
+                c16: Math.round(Math.random() * 300)
+            };
+        }
+
+         function random(array, num) {
+            var a = array;
+            var t = [];
+            var r = [];
+            var l = a.length;
+            var n = num < l ? num : l;
+            while (n-- > 0) {
+                var i = Math.random() * l | 0;
+                r[n] = t[i] || a[i];
+                --l;
+                t[i] = t[l] || a[l];
+            }
+            return r;
+        }
+
+        $(function () {
+
+            dataView = new Slick.Data.DataView(); 
+            grid = new Slick.Grid("#grid", dataView, columns, options);
+
+            grid.setSelectionModel(new Slick.CellSelectionModel());
+
+            // set keyboard focus on the grid
+            grid.getCanvasNode().focus();
+            grid.registerPlugin(new Slick.CellExternalCopyManager());
+
+            dataView.onRowCountChanged.subscribe(function (e, args) {
+                grid.updateRowCount();
+                grid.render();
+            });
+
+            dataView.onRowsChanged.subscribe(function (e, args) {
+                grid.invalidateRows(args.rows);
+                grid.render();
+            });
+
+            dataView.beginUpdate();
+            dataView.setItems(data);
+            dataView.setFilter(filter);
+            dataView.endUpdate();
+
+            // Excel like status bar at the bottom
+            var status;
+
+            status = dataView.getItems().length + ' :TOTAL RECORDS';
+            $('#status-label').text(status);
+            
+            //Function Filter
+            var filterPlugin = new Ext.Plugins.HeaderFilter({});
+
+            // This event is fired when a filter is Selected    
+            filterPlugin.onFilterApplied.subscribe(function () {            
+                dataView.refresh();
+                grid.resetActiveCell();
+
+                // Excel like status bar at the bottom
+                var status;
+
+                if (dataView.getLength() === dataView.getItems().length) {
+                    status = dataView.getItems().length + ' :TOTAL RECORDS';
+                } else {
+                    status = dataView.getLength() + ' OF ' + dataView.getItems().length + ' RECORDS FOUND';
+                }
+                $('#status-label').text(status);
+            });
+
+
+            // This event is fired when a menu option is selected
+            filterPlugin.onCommand.subscribe(function (e, args) {
+                dataView.fastSort(args.column.field, args.command === "sort-asc");
+            });
+
+            grid.registerPlugin(filterPlugin);
+            grid.init();
+
+            function filter(item) {
+                var columns = grid.getColumns();
+                var value = true;
+
+                for (var i = 0; i < columns.length; i++) {
+                    var col = columns[i];
+                    var filterValues = col.filterValues;
+
+                    if (filterValues && filterValues.length > 0) {
+                        value = value & _.contains(filterValues, item[col.field]);
+                    }
+                }
+                return value;
+            }
+        });
+
+    </script>
+    
+    </body>
+
+</html>
+
+<!--
+*****************************************************************************************************************
+//SlickExcel
+    
+    ##Customized
+    :Add Total Count View
+    :Tuning the sort/reverse Function
+    :Filter Unique Count On/Off
+    :Output CSV,TSV and other type
+    :Filter Data to CSV OUTPUT
+    :Copy and Paste (slickexcel's Cell copy >> other Application(ex:Excel's sheet , simpletext, any Application))
+    **(This Libraly based on "jquery-1.7.min.js")**
+
+    ##Libraly Mix
+    ･"Paste from Excel to SlickGrid" : (Nereo Labs) http://labs.nereo.com/slick.html
+    ･"slickgrid-spreadsheet-plugins" : https://github.com/danny-sg/slickgrid-spreadsheet-plugins
+    ･"SlickGrid-Export-CSV" : https://github.com/BethelBoy/SlickGrid-Export-CSV
+    
+    (Example based on SlickGrid examples - https://github.com/mleibman/SlickGrid/tree/master/examples)
+    
+*****************************************************************************************************************
+-->
