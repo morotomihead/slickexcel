@@ -28,7 +28,8 @@ http://okashira.github.io/slickexcel/slickexcel_example01.html
 * 列ごとのフィルター・カウント機能のON/OFF
 * Sample Fileの作成
 
-### OKASHIRA (individual.lab)
+
+OKASHIRA (individual.lab)
 
 ## About SlickGrid
 
