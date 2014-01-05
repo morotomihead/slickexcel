@@ -1,23 +1,22 @@
 # SlickExcel 
 
-### Sample View
-http://okashira.github.io/slickexcel/slickexcel_example01.html
-(CSV出力はPHP有効のみ）
-
 ### 機能・改良点
 * Excelと同様のフィルタリング、ソート（昇順・降順）
 * フィルタリングしたデータのみを抽出、外部出力(CSV)
 * フィルターメニューにて各値のユニークカウント表示
 * Drag and Dropで列並びの編集。編集した状態でのCSV出力
-* Copy and Paste (slickexcel上で任意をコピー >> ExcelやTextなど外部アプリケーションにペースト(tab区切り))
-* 表示行数カウント表示
+* Copy and Paste (slickexcel上で任意をコピー → ExcelやTextなど外部アプリケーションにペースト(tab区切り))
+* データ表示時、フィルター抽出時での件数カウント
 * 各ライブラリの連携調整
 * データソートの処理調整
 
 ### 概要
-* SlickGridはJavaScript製、MIT Licenseのオープンソース・ソフトウェア。
+* MIT Licenseのオープンソース・ソフトウェア「SlickGrid」の拡張と改良。
 * Webベースで動作するExcelライクな表計算（グリッド）表示ライブラリ。
 * 大量のデータを高速に表示処理することが可能（50万行程度のデータなど）
+
+### Sample File
+http://okashira.github.io/slickexcel/slickexcel_example01.html
 
 ### Extended code
 * "Paste from Excel to SlickGrid" : (Nereo Labs) http://labs.nereo.com/slick.html
@@ -25,10 +24,9 @@ http://okashira.github.io/slickexcel/slickexcel_example01.html
 * "SlickGrid-Export-CSV" : https://github.com/BethelBoy/SlickGrid-Export-CSV
 
 ### ToDo (ヒマだったらやる）
-* GoogleChart連携
-* ユニークカウントON/OFF指定
-* Sampleの用意
-
+* GoogleChart連携機能
+* 列ごとのフィルター・カウント機能のON/OFF
+* Sample Fileの作成
 
 ### OKASHIRA (individual.lab)
 
