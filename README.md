@@ -16,7 +16,7 @@
 * 大量のデータを高速に表示処理することが可能（50万行程度のデータなど）
 
 ### Sample File
-http://okashira.github.io/slickexcel/slickexcel_example01.html
+http://morotomihead.github.io/slickexcel/slickexcel_example01.html
 
 ### Extended code
 * "Paste from Excel to SlickGrid" : (Nereo Labs) http://labs.nereo.com/slick.html
